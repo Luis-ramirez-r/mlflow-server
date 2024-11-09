@@ -1,0 +1,4 @@
+mlflow[extras]
+mlserver
+mlserver-mlflow
+gunicorn
