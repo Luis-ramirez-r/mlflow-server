@@ -1,17 +1,23 @@
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 WORKDIR /mlflow
 
+# Install system dependencies
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     build-essential \
     wget \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
+# Install Python dependencies
 RUN pip install --no-cache-dir \
-    mlflow==2.10.0 \
+    mlflow[extras] \
+    mlserver \
+    mlserver-mlflow \
     gunicorn
 
+# Create necessary directories and set permissions
 RUN mkdir -p /mlflow/artifacts && \
     mkdir -p /mlflow/mlruns && \
     touch /mlflow/mlflow.db && \
