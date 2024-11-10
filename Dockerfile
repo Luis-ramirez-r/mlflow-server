@@ -26,7 +26,7 @@ RUN mkdir -p /mlflow/artifacts && \
 EXPOSE 5000
 
 CMD ["mlflow", "server", \
-    "--app-name", "basic-auth" \
+    "--app-name", "basic-auth", \
      "--host", "0.0.0.0", \
      "--port", "5000", \
      "--backend-store-uri", "sqlite:///mlflow.db", \
